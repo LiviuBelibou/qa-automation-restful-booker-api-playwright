@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Playwright output
+test-results/
+playwright-report/
+blob-report/
+
+# Environment configuration
+.env
+.env.*
+!.env.example
+
+# Operating system and editors
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and coverage
+npm-debug.log*
+coverage/

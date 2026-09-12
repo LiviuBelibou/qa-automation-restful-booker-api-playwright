@@ -1,0 +1,46 @@
+{
+  "name": "qa-automation-restful-booker-api-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API test automation framework for Restful Booker using Playwright and TypeScript",
+  "type": "commonjs",
+  "scripts": {
+    "test": "playwright test",
+    "test:auth": "playwright test --grep @auth",
+    "test:booking": "playwright test --grep @booking",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:negative": "playwright test --grep @negative",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "api-testing",
+    "playwright",
+    "typescript",
+    "test-automation",
+    "restful-booker"
+  ],
+  "author": "Liviu Belibou",
+  "license": "ISC",
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.2",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.0"
+  }
+}
