@@ -12,7 +12,9 @@ Nine scenarios across three test files, with one Playwright project named api.
 
 Local TypeScript, ESLint, formatting checks, and all nine tests passed during setup.
 
-A GitHub Actions workflow is included. Repository secrets and a successful GitHub run still need to be verified after publication.
+The first GitHub Actions run passed all nine tests and code-quality checks. The HTML report was uploaded successfully.
+
+The main branch is protected by the active protect-main ruleset.
 
 Technology
 
@@ -46,7 +48,7 @@ Apply consistent formatting
 
 GitHub Actions
 
-Run checks on GitHub once repository configuration is complete
+Run automated quality checks and API tests on GitHub
 
 The project uses CommonJS with TypeScript's NodeNext configuration. Source files use import and export syntax; switching the package to ES modules is not required for this framework.
 
@@ -365,17 +367,17 @@ Pushes to main.
 
 Pull requests targeting main.
 
-Manual invocation through workflow_dispatch once available in GitHub.
+Manual invocation through workflow_dispatch.
 
 It checks out the code, sets up Node.js 24, runs npm ci, and executes npm run check. If a Playwright report exists, it is uploaded as an artifact with a 14-day retention period, including after a failed test run.
 
-Before the first CI run, configure repository Actions secrets named API_USERNAME and API_PASSWORD. The workflow supplies the practice API base URL directly; it does not need the local .env file.
+This repository uses Actions secrets named API_USERNAME and API_PASSWORD for authentication. When setting up your own copy on GitHub, configure those secrets in that repository before running CI. The workflow supplies the practice API base URL directly; it does not need the local .env file.
 
 Secrets are normally unavailable to workflows triggered by pull requests from forks. The current credential-dependent workflow needs a separate policy before supporting external contributions. See GitHub's guidance on using secrets.
 
 CI is configured for one worker and up to two retries per failing test. Local runs use Playwright's default worker allocation with no retries. A retry that passes still deserves investigation; it does not explain the original failure.
 
-The intended status-check name is API quality checks. Verify a successful GitHub run before adding it as a required branch-protection check. This README does not yet claim that CI or branch protection has been verified.
+The required status-check name is API quality checks. The active protect-main ruleset requires pull requests, passing checks, and branches that are up to date before merging into main. Force pushes and branch deletion are blocked, with no bypass exceptions. Required review approvals are set to zero for this solo project.
 
 Scope and limitations
 
